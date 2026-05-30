@@ -1,0 +1,25 @@
+export function formatPrice(n) {
+  if (n == null) return "";
+  return "₹" + Number(n).toLocaleString("en-IN");
+}
+
+export function cleanNumber(number) {
+  return (number || "").replace(/[^0-9]/g, "");
+}
+
+export function buildWhatsAppLink(number, message) {
+  return `https://wa.me/${cleanNumber(number)}?text=${encodeURIComponent(message)}`;
+}
+
+export function singleProductMessage(name) {
+  return `Hi I want this PC - ${name} - Is it available?`;
+}
+
+export function inquiryMessage(items) {
+  const lines = items.map(
+    (i, idx) => `${idx + 1}. ${i.name} — ${formatPrice(i.price)}`
+  );
+  return `Hi Yadav PC Wala! I'm interested in these gaming PCs:\n\n${lines.join(
+    "\n"
+  )}\n\nAre these available? Please share more details.`;
+}
