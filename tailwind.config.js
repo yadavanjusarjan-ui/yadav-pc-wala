@@ -1,33 +1,97 @@
-// Test IDs for the auth feature (login, register, password reset, logout).
-// Add new keys here as you wire up additional auth UI; see ./index.js for
-// the recipe to add a new feature file.
-//
-// Directive:
-//   - Keys are camelCase, values are kebab-case shaped as `<feature>-<element>`
-//     (or `<feature>-<element>-<qualifier>` when an element repeats). Examples:
-//     'login-submit-button', 'cart-quantity-input', 'product-card-image'.
-//   - Reference them in JSX as `data-testid={LOGIN.submitButton}`.
-//
-// Why kebab-case values: required by qabot's CSS-attribute selector matcher
-// and the lint rule `emergent(kebab-case-testid)`.
-
-export const LOGIN = {
-	emailInput: 'login-email-input',
-	passwordInput: 'login-password-input',
-	submitButton: 'login-submit-button',
-	forgotPasswordLink: 'login-forgot-password-link',
-	registerLink: 'login-register-link',
-};
-
-export const REGISTER = {
-	nameInput: 'register-name-input',
-	emailInput: 'register-email-input',
-	passwordInput: 'register-password-input',
-	passwordConfirmInput: 'register-password-confirm-input',
-	submitButton: 'register-submit-button',
-	loginLink: 'register-login-link',
-};
-
-export const LOGOUT = {
-	button: 'logout-button',
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    darkMode: ["class"],
+    content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html"
+  ],
+  theme: {
+        extend: {
+                fontFamily: {
+                        heading: ['Unbounded', 'system-ui', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+                        sans: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+                },
+                colors: {
+                        neon: {
+                                cyan: '#00F0FF',
+                                purple: '#9D4CDD',
+                                red: '#FF003C'
+                        },
+                        whatsapp: '#25D366',
+                        void: '#050505',
+                        surface: '#0F0F13'
+                },
+                borderRadius: {
+                        lg: 'var(--radius)',
+                        md: 'calc(var(--radius) - 2px)',
+                        sm: 'calc(var(--radius) - 4px)'
+                },
+                colors: {
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        card: {
+                                DEFAULT: 'hsl(var(--card))',
+                                foreground: 'hsl(var(--card-foreground))'
+                        },
+                        popover: {
+                                DEFAULT: 'hsl(var(--popover))',
+                                foreground: 'hsl(var(--popover-foreground))'
+                        },
+                        primary: {
+                                DEFAULT: 'hsl(var(--primary))',
+                                foreground: 'hsl(var(--primary-foreground))'
+                        },
+                        secondary: {
+                                DEFAULT: 'hsl(var(--secondary))',
+                                foreground: 'hsl(var(--secondary-foreground))'
+                        },
+                        muted: {
+                                DEFAULT: 'hsl(var(--muted))',
+                                foreground: 'hsl(var(--muted-foreground))'
+                        },
+                        accent: {
+                                DEFAULT: 'hsl(var(--accent))',
+                                foreground: 'hsl(var(--accent-foreground))'
+                        },
+                        destructive: {
+                                DEFAULT: 'hsl(var(--destructive))',
+                                foreground: 'hsl(var(--destructive-foreground))'
+                        },
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                        chart: {
+                                '1': 'hsl(var(--chart-1))',
+                                '2': 'hsl(var(--chart-2))',
+                                '3': 'hsl(var(--chart-3))',
+                                '4': 'hsl(var(--chart-4))',
+                                '5': 'hsl(var(--chart-5))'
+                        }
+                },
+                keyframes: {
+                        'accordion-down': {
+                                from: {
+                                        height: '0'
+                                },
+                                to: {
+                                        height: 'var(--radix-accordion-content-height)'
+                                }
+                        },
+                        'accordion-up': {
+                                from: {
+                                        height: 'var(--radix-accordion-content-height)'
+                                },
+                                to: {
+                                        height: '0'
+                                }
+                        }
+                },
+                animation: {
+                        'accordion-down': 'accordion-down 0.2s ease-out',
+                        'accordion-up': 'accordion-up 0.2s ease-out'
+                }
+        }
+  },
+  plugins: [require("tailwindcss-animate")],
 };
